@@ -1,12 +1,16 @@
+#!/usr/bin/python
+
 import telebot
 import difflib
+import sys
+import os
 from inotify_simple import INotify, flags
 
-log = "error.log"
-check = "check.txt"
+log = sys.argv[1]
+check = log + str(".check")
 
-chatId = ''
-bot = telebot.TeleBot("")
+chatId = sys.argv[2]
+bot = telebot.TeleBot(sys.argv[3])
 
 inotify = INotify()
 watch_flags = flags.MOVE_SELF | flags.MODIFY
@@ -52,6 +56,10 @@ def beda(log, check):
 i = 1
 while 1:
     if i == 1:
+        if not os.path.isfile(check):
+            f= open(check,"w+")
+            f.close()
+
         with open(log, "r") as logFile, open(check) as checkFile:
             loglines = logFile.readlines()
             checklines = checkFile.readlines()
