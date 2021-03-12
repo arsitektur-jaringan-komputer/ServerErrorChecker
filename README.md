@@ -1,16 +1,15 @@
-![Server Error Checker](/images/Logo.png)
+![File Tracker](/images/Logo.png)
 
-Server error checker untuk mengecek error yang ada di server* dan mengirimnya ke telegram pengguna melalui bot telegram. Program ini dibuat dengan bahasa pemrograman Python dan dijalankan di server.
+File tracker digunakan untuk mengecek apakah ada perubahan di suatu file yang berada di server dan mengirimnya ke telegram pengguna melalui bot telegram. Program ini dibuat dengan bahasa pemrograman Python dan dijalankan di server.
 
-__**Hanya error pada Nginx*__
 
 ---
 
 ## Fitur
 
-1. Mendeteksi error di server secara real-time
-2. Mengirim error melalui bot telegram dengan menggunakan api telegram kepada user atau grup telegram yang diinginkan
-    Contoh error : 
+1. Mendeteksi perubahan file di server secara real-time
+2. Mengirim perubahan file melalui bot telegram dengan menggunakan api telegram kepada user atau grup telegram yang diinginkan
+    Contoh perubahan file : 
     
     ![Error example](/images/error_example.PNG)
 
@@ -35,18 +34,14 @@ __**Hanya error pada Nginx*__
 ---
 
 ## Cara Menggunakan
-1. Copy file `nginx_checker.py` dari folder `ServerErrorChecker` hasil clone dari github ke server.
+1. Copy file `file_checker.py` dari folder `ServerErrorChecker` hasil clone dari github ke server.
 2. Buat file teks untuk membandingkan error yang sudah ada (misal: `check.txt`)
-3. Buka file `nginx_checker.py` dan ubah:
-
-   ```python
-   log = '' # Isi sesuai nama file log error dan direktorinya (misal error.log dari Nginx)
-   check = '' # Isi sesuai nama file dan direktorinya pada step 2
-
-   chatId = '' # Isi sesuai id group atau chat telegram yang ingin dikirimkan pesan errornya
-   bot = telebot.TeleBot("") # Masukkan kode API token dari bot Telegram yang sudah dibuat
+3. Dapatkan id user dan token untuk bot api telegram dengan mengikuti [Cara Menyiapkan Bot Telegram](#cara-menyiapkan-bot-telegram-untuk-mengirim-pesan-error-ke-user)
+4. Jalankan dengan urutan command :
    ```
-4. Jalankan `nginx_checker.py` sebagai daemon agar bisa dijalankan di background.
+   file_checker.py file_yang_ingin_di_check id_telegram token_bot_api
+   ```
+5. Jalankan `file_checker.py` sebagai daemon agar bisa dijalankan di background.
 
 ---
 
@@ -65,7 +60,7 @@ __**Hanya error pada Nginx*__
     {"id":,"title":""},"date":25497,"new_chat_participant":
     {"id":71,"first_name":"NAME","username":"YOUR_BOT_NAME"}}}
     ```
-7. Copy dan paste id yang baru saja didapatkan ke script `nginx_checker.py`
+7. Copy dan paste id yang baru saja didapatkan ke script `file_checker.py`
 
 ---
 
@@ -78,7 +73,7 @@ __**Hanya error pada Nginx*__
 4. Buat grup di telegram dan invite bot yang telah dibuat
 5. Cari nilai id yang memiliki tanda minus (-)
 6. Buka link `https://api.telegram.org/bot(token_api_bot)/getUpdates` di browser
-7. Copy dan paste id yang baru saja didapatkan ke script `nginx_checker.py`
+7. Copy dan paste id yang baru saja didapatkan ke script `file_checker.py`
 8. Jalankan script python tersebut
 9. Akan ada pesan error yang memberikan id yang baru, lalu id itu yang akan digunakan dalam script python
 
@@ -93,6 +88,6 @@ __**Hanya error pada Nginx*__
 3. Bot tersebut akan mengeluarkan info tentang grup tersebut
     ![Id telegram](/images/id_with_telegram_bot_raw.PNG)
     
-4. Copy dan paste id yang baru saja didapatkan ke script `nginx_checker.py`
+4. Copy dan paste id yang baru saja didapatkan ke script `file_checker.py`
 5. Jalankan script python tersebut
 6. Akan ada pesan error yang memberikan id yang baru, lalu id itu yang akan digunakan dalam script python
