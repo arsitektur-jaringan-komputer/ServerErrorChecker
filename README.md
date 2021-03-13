@@ -1,7 +1,7 @@
 ![File Tracker](/images/Logo.png)
 
-File tracker digunakan untuk mengecek apakah ada perubahan di suatu file yang berada di server dan mengirimnya ke telegram pengguna melalui bot telegram. Program ini dibuat dengan bahasa pemrograman Python dan dijalankan di server.
-
+Deskripsi:
+Aplikasi ini merupakan alat untuk mengawasi perubahaan pada log. alat ini akan mengabari pemiliknya ketika terjadi perubahan pada log menggunakan bot messenger seperti telegram. sehingga ketika terjadi error pada aplikasi yang tercatat pada log akan segera diketahui oleh pemiliknya.
 
 ---
 
